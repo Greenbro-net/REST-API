@@ -1,7 +1,11 @@
 <?php
 
-// REST API
+require_once 'vendor/autoload.php';
 
+use App\Core\Application;
+
+Application::call_by_url();
+var_dump(Application::clearupParameter());
 echo "Enter parameter for request";
 
 ?>
@@ -22,3 +26,5 @@ echo "Enter parameter for request";
 </form>
 
 
+<?php
+var_dump($_SERVER['REQUEST_URI']);

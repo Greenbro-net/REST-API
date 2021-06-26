@@ -1,0 +1,2 @@
+Message:Method call_by_url hasn't found current controller<br />File: /opt/lampp/htdocs/test.net/REST-API/public_html/App/Core/Application.php<br />Line: 27<br />Trace: #0 /opt/lampp/htdocs/test.net/REST-API/public_html/index.php(7): App\Core\Application::call_by_url()
+#1 {main}

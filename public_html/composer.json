@@ -1,0 +1,13 @@
+{
+    "name": "alexander/rest-api",
+    "authors": [
+        {
+            "name": "Surf-house",
+            "email": "reeeee@ukr.net"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "classmap": ["App/Core","App/Controller","App/Model"]
+    }
+}

@@ -4,7 +4,7 @@ namespace App;
 
 use PDO;
 
-require_once 'config.php';
+require_once '../config.php';
 
 
 
@@ -136,6 +136,11 @@ class RequestModel {
                     file_put_contents("my-errors.log", 'Message:' . $exception->getMessage() . '<br />'.   'File: ' . $exception->getFile() . '<br />' .
                       'Line: ' . $exception->getLine() . '<br />' .'Trace: ' . $exception->getTraceAsString());
                                            }
+    }
+
+    public function show_entries()
+    {
+        var_dump($this->grab_data_catalog());
     }
 
     
