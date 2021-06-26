@@ -6,8 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\RequestController' => $baseDir . '/App/Controller/RequestController.php',
+    'App\\Controller\\TroubleController' => $baseDir . '/App/Controller/TroubleController.php',
     'App\\Core\\Application' => $baseDir . '/App/Core/Application.php',
     'App\\Core\\Controller' => $baseDir . '/App/Core/Controller.php',
     'App\\Core\\View' => $baseDir . '/App/Core/View.php',
-    'App\\RequestModel' => $baseDir . '/App/Model/RequestModel.php',
+    'App\\Model\\RequestModel' => $baseDir . '/App/Model/RequestModel.php',
+    'App\\Model\\TroubleModel' => $baseDir . '/App/Model/TroubleModel.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

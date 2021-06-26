@@ -1,13 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use PDO;
-
-require_once '../config.php';
-
-
-
 
 
 
