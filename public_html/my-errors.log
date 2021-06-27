@@ -1,6 +1,6 @@
-Message:SQLSTATE[HY000] [1045] Access denied for user 'green64_one'@'88.155.53.189' (using password: YES)<br />File: /var/www/example.com/public_html/App/Model/RequestModel.php<br />Line: 19<br />Trace: #0 /var/www/example.com/public_html/App/Model/RequestModel.php(19): PDO->__construct()
-#1 /var/www/example.com/public_html/App/Model/RequestModel.php(122): App\Model\RequestModel::connect()
-#2 /var/www/example.com/public_html/App/Model/RequestModel.php(148): App\Model\RequestModel->grab_data_catalog()
+Message:SQLSTATE[HY000] [1045] Access denied for user 'green64_one'@'37.73.64.72' (using password: YES)<br />File: /var/www/example.com/public_html/App/Model/RequestModel.php<br />Line: 17<br />Trace: #0 /var/www/example.com/public_html/App/Model/RequestModel.php(17): PDO->__construct()
+#1 /var/www/example.com/public_html/App/Model/RequestModel.php(120): App\Model\RequestModel::connect()
+#2 /var/www/example.com/public_html/App/Model/RequestModel.php(146): App\Model\RequestModel->grab_data_catalog()
 #3 /var/www/example.com/public_html/vendor/composer/ClassLoader.php(480): include('...')
 #4 /var/www/example.com/public_html/vendor/composer/ClassLoader.php(346): Composer\Autoload\includeFile()
 #5 [internal function]: Composer\Autoload\ClassLoader->loadClass()
@@ -8,6 +8,6 @@ Message:SQLSTATE[HY000] [1045] Access denied for user 'green64_one'@'88.155.53.1
 #7 /var/www/example.com/public_html/App/Controller/RequestController.php(13): App\Core\Controller->load_model_obj()
 #8 [internal function]: App\Controller\RequestController->call_show_entries()
 #9 /var/www/example.com/public_html/App/Core/Application.php(24): call_user_func_array()
-#10 /var/www/example.com/public_html/index.php(71): App\Core\Application::call_by_url()
-#11 /var/www/example.com/public_html/index.php(93): checkout_url()
+#10 /var/www/example.com/public_html/index.php(70): App\Core\Application::call_by_url()
+#11 /var/www/example.com/public_html/index.php(92): checkout_url()
 #12 {main}

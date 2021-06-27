@@ -5,8 +5,6 @@ namespace App\Model;
 use PDO;
 
 
-
-
 class RequestModel {
     private static $host   = DATABASE_HOST;
     private static $dbName = DATABASE_NAME;
@@ -148,13 +146,3 @@ echo "<pre>";
 var_dump($request_model_object->grab_data_catalog());
 
 
-// SELECT * FROM catalog WHERE catalog.id_category = 8 AND catalog.id_currency = 4(catalog.price) BETWEEN 500 AND 100000
-// INNER JOIN catalog_currencies.rate
-//             ORDER BY catalog.price DESC
-
-
-// SELECT order_customer_id, total_price, recipient_name, recipient_last_name, quantity_of_item, name
-// FROM orders
-// JOIN customers ON orders.order_customer_id = customers.customer_id
-// JOIN order_items ON orders.united_order = order_items.united_order_items
-// JOIN products ON order_items.product_id = products.id

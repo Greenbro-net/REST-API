@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="ajax-request.js"></script> -->
+    <title>Document</title>
+
+</head>
+<body>
+    
+
 <form action="RequestModel.php" method="GET">
      <lable for="id_brand">Enter id of brend</lable>
      <input type="text" name="id_brand" value="80">
@@ -11,4 +24,8 @@
      </br></br>
      <label for="price">Price (between 0 and 1000000):</label>
      <input type="range" id="item_price" name="price" min="0" max="1000000">
+     </br></br>
+     <button type="button" name="request_button" onclick="send_request(id, price)">Send request</button>
 </form>
+</body>
+</html>
