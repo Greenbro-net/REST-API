@@ -1,0 +1,19 @@
+<form action="http://example.com/request/prepare_request" method="GET">
+    <label for="select_category_id">Choose a category_id:</label>
+    <select name="id_category" id="select_category_id_field">
+         <?php create_categories(); ?>
+    </select>
+    </br></br>
+    <button type="submit">Prepare request</button>
+
+</form>
+
+<?php
+function create_categories()
+{
+    for ($i = 1; $i <=10; $i++) {
+        echo "<option value=\"$i\">Category of product:  $i</option>";
+    }
+}
+
+?>

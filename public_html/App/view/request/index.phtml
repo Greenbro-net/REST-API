@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="ajax-request.js"></script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    
+    <!-- <script defer src="js/ajax-request.js"></script> -->
     <title>Document</title>
 
 </head>
@@ -12,8 +15,8 @@
     
 
 <form action="RequestModel.php" method="GET">
-     <lable for="id_brand">Enter id of brend</lable>
-     <input type="text" name="id_brand" value="80">
+     <lable for="id_brand_input">Enter id of brend</lable>
+     <input type="text" id="id_brand" name="id_brand" value="80">
      </br></br>
      <label for="id_availability">Choose a availability of product:</label>
      <select name="id_availability" id="field_id_availability">
@@ -22,10 +25,71 @@
          <option value="3">Under the order: 3 </option>
      </select>
      </br></br>
-     <label for="price">Price (between 0 and 1000000):</label>
-     <input type="range" id="item_price" name="price" min="0" max="1000000">
+     <label for="price">Price from(between 0 and 1000000):</label>
+     <input type="range" id="item_price_from" name="from_price" min="0" max="1000000">
      </br></br>
-     <button type="button" name="request_button" onclick="send_request(id, price)">Send request</button>
+     <label for="price">Price to(between 0 and 1000000):</label>
+     <input type="range" id="item_price_to" name="to_price" min="0" max="1000000">
+     </br></br>
+     <label for="price_sorting_order">Choose a order of sorting:</label>
+     <select name="id_sorting" id="price_sorting_order_field">
+         <option value="sort_with_price">Use price for sorting </option>
+         <option value="sort_without_price">Sort without price </option>
+     </select>
+     </br></br>
+     <label for="is_desc">Choose descending or ascending sorting order:</label>
+     <select name="id_sorting_order" id="sorting_order_field">
+         <option value="ascending_sorting">Use ascending order for sorting </option>
+         <option value="descending_sorting">Use descending order for sorting </option>
+     </select>
+     </br></br>
+     <button type="button"  onclick="send_request(id)" name="request_button">Send request</button>
+     <!-- add interface for sorting -->
 </form>
+
+<script>
+function send_request(id_brand) {
+    // code below grabs value from input element with correct id of item 
+      var id_brand = $("#id_brand").val();
+      var id_availability = $("#field_id_availability").val();
+      var item_price_from = $("#item_price_from").val();
+      var item_price_to = $("#item_price_to").val();
+      var price_sorting_order = $("#price_sorting_order_field").val();
+      var sorting_order = $("#sorting_order_field").val();
+
+      // the code below passes price from hidden field to item_cart_script
+      // var price = $('#price_' + id).val();
+      alert(id_brand);
+      alert(id_availability);
+      alert(item_price_from);
+      alert(item_price_to);
+      alert(price_sorting_order);
+      alert(sorting_order);
+    
+    $.ajax({                            
+        type: "GEt",
+        url: "http://example.com/request/grab_product",
+        data: {id: id , price: price},
+        success: function(data, textStatus, jqXHR) {
+          // the code below reload shopping-cart-container and displays correct info of item after updating 
+          $("#display_reload_cart_item").load(url+"://greenbro."+domen_part+"/cart/show_cart_item/" + ' #cart_item_code');
+            // alert(id);
+            // alert(data);
+            // alert(quantity_of_item);
+            // alert(price);
+        },
+        error: function(data) {
+          alert("Error in onAdd function");
+        }
+    });
+    
+}
+</script>
+
+
+
+
+
+
 </body>
 </html>
