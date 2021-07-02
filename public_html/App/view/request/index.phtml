@@ -15,11 +15,12 @@
     
 
 <form action="RequestModel.php" method="GET">
-     <lable for="id_brand_input">Enter id of brend</lable>
-     <input type="text" id="id_brand" name="id_brand" value="80">
+     <lable for="id_brand_input">Enter id of brand</lable>
+     <input type="text" id="id_brand" name="id_brand" value="70">
      </br></br>
      <label for="id_availability">Choose a availability of product:</label>
-     <select name="id_availability" id="field_id_availability">
+     <select name="id_availability" id="field_id_availability">  
+         <option value="all">Select: all </option>
          <option value="1">Is available: 1 </option>
          <option value="2">To specify the delivery: 2 </option>
          <option value="3">Under the order: 3 </option>
@@ -33,14 +34,14 @@
      </br></br>
      <label for="price_sorting_order">Choose a order of sorting:</label>
      <select name="id_sortingBy" id="sortBy">
-         <option value="sort_with_price">Use price for sorting </option>
-         <option value="sort_with_name">Use name for sorting </option>
+         <option value="price_in_uah">Use price for sorting </option>
+         <option value="current_price.name">Use name for sorting </option>
      </select>
      </br></br>
      <label for="is_desc">Choose descending or ascending sorting order:</label>
      <select name="id_isDesc" id="isDesc">
-         <option value="ascending_sorting">Use ascending order for sorting </option>
-         <option value="descending_sorting">Use descending order for sorting </option>
+         <option value="ASC">Use ascending order for sorting </option>
+         <option value="DESC">Use descending order for sorting </option>
      </select>
      </br></br>
      <button type="button"  onclick="send_request()" name="request_button">Send request</button>
@@ -70,12 +71,15 @@ function send_request(id_brand) {
 
       // the code below passes price from hidden field to item_cart_script
       // var price = $('#price_' + id).val();
+    //   alert(id_category);
+
     //   alert(id_brand);
     //   alert(id_availability);
     //   alert(item_price_from);
     //   alert(item_price_to);
     //   alert(sort_by);
     //   alert(is_desc);
+      
     
     $.ajax({                            
         dataType: "JSON",
@@ -106,7 +110,7 @@ function send_request(id_brand) {
         },
         error: function(response) {
           alert(response.success);
-          alert("Error in onAdd function");
+          alert("Error in send_request function");
         }
     });
     

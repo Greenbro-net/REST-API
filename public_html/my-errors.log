@@ -1,7 +1,8 @@
-Message:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1<br />File: /var/www/example.com/public_html/App/Model/RequestModel.php<br />Line: 175<br />Trace: #0 /var/www/example.com/public_html/App/Model/RequestModel.php(175): PDOStatement->execute()
-#1 /var/www/example.com/public_html/App/Controller/RequestController.php(69): App\Model\RequestModel->grab_total_filtered_rows_quantity()
-#2 [internal function]: App\Controller\RequestController->grab_product()
-#3 /var/www/example.com/public_html/App/Core/Application.php(24): call_user_func_array()
-#4 /var/www/example.com/public_html/index.php(25): App\Core\Application::call_by_url()
-#5 /var/www/example.com/public_html/index.php(45): checkout_url()
-#6 {main}
+Message:SQLSTATE[HY000] [1045] Access denied for user 'green64_one'@'37.73.39.6' (using password: YES)<br />File: /var/www/example.com/public_html/App/Model/RequestModel.php<br />Line: 28<br />Trace: #0 /var/www/example.com/public_html/App/Model/RequestModel.php(28): PDO->__construct()
+#1 /var/www/example.com/public_html/App/Model/RequestModel.php(53): App\Model\RequestModel::connect()
+#2 /var/www/example.com/public_html/App/Controller/RequestController.php(72): App\Model\RequestModel->grab_catalog_data()
+#3 [internal function]: App\Controller\RequestController->grab_product()
+#4 /var/www/example.com/public_html/App/Core/Application.php(24): call_user_func_array()
+#5 /var/www/example.com/public_html/index.php(25): App\Core\Application::call_by_url()
+#6 /var/www/example.com/public_html/index.php(45): checkout_url()
+#7 {main}
