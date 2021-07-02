@@ -17,7 +17,7 @@ function checkout_url()
                     Application::call_by_url();
                      $variable = TRUE;
                  }
-                elseif (class_exists("\\App\Controller\\" . $controller_name) ) {
+                elseif (class_exists("\\App\Controller\\" . $controller_name)) {
                     $controller = "\\App\Controller\\" . $controller_name;
 
                     $controller = new $controller;

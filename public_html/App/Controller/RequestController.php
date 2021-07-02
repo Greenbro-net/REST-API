@@ -25,12 +25,10 @@ class RequestController extends Controller
         
         $this->id_brand = !empty($_GET['id_brand']) ? $this->filter_data($_GET['id_brand']) : false;
         $this->id_availability = !empty($_GET['id_availability']) ? $this->filter_data($_GET['id_availability']) : false;
-        $this->item_price_from = !empty($_GET['item_price_from']) ? $this->filter_data($_GET['item_price_from']) : false;
-        $this->item_price_to = !empty($_GET['item_price_to']) ? $this->filter_data($_GET['item_price_to']) : false;
+        $this->item_price_from = !empty($_GET['price']['item_price_from']) ? $this->filter_data($_GET['price']['item_price_from']) : false;
+        $this->item_price_to = !empty($_GET['price']['item_price_to']) ? $this->filter_data($_GET['price']['item_price_to']) : false;
         $this->price_name_sorting_order = !empty($_GET['sorting']['sort_by']) ? $this->filter_data($_GET['sorting']['sort_by']) : false;
         $this->sorting_order = !empty($_GET['sorting']['is_desc']) ? $this->filter_data($_GET['sorting']['is_desc']) : false;
-    
-    
     }
 
     
@@ -67,23 +65,27 @@ class RequestController extends Controller
             $query_controller_obj = new QueryController($request_controller_obj);
 
             $query = $query_controller_obj->make_query();
-
             $form_data['array'] = $request_model_obj->grab_catalog_data($query);
             
-            // // the code below for fetching filtered quantity
-            // $filtered_quantity = $request_model_obj->grab_total_filtered_rows_quantity($request_controller_obj);
-            // $form_data['array'] = array_merge($form_data['array'], $filtered_quantity);
-            // // the code below for fetching total quantity
-            // $total_quantity = $request_model_obj->grab_total_rows_quantity();
-            // $form_data['array'] = array_merge($form_data['array'], $total_quantity);
+
+            // the code below for fetching filtered quantity
+            $query = $query_controller_obj->make_filtered_total_query();
+            $filtered_quantity = $request_model_obj->grab_total_filtered_rows_quantity($query);
+            $form_data['total_filtered_quantity'] = $filtered_quantity;
+            
+            
+            // the code below for fetching total quantity
+            $query = $query_controller_obj->make_total_query();
+            $total_quantity = $request_model_obj->grab_total_rows_quantity($query);
+            $form_data['total_quantity'] =  $total_quantity;
+
+
 
             $form_data['success'] = true;
             $form_data['posted'] = 'Data was fetched successfully';
             echo json_encode($form_data);
                }
          
-        
-
     }
 
     

@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    
-    <!-- <script defer src="js/ajax-request.js"></script> -->
     <title>Document</title>
 
 </head>
@@ -16,7 +14,7 @@
 
 <form action="RequestModel.php" method="GET">
      <lable for="id_brand_input">Enter id of brand</lable>
-     <input type="text" id="id_brand" name="id_brand" value="70">
+     <input type="text" id="id_brand" name="id_brand" value="all">
      </br></br>
      <label for="id_availability">Choose a availability of product:</label>
      <select name="id_availability" id="field_id_availability">  
@@ -26,11 +24,11 @@
          <option value="3">Under the order: 3 </option>
      </select>
      </br></br>
-     <label for="price">Price from(between 0 and 1000000):</label>
-     <input type="range" id="item_price_from" name="from_price" min="0" max="1000000">
+     <label for="price">Price from(between 1 and 10000000000):</label>
+     <input type="range" id="item_price_from" name="from_price" value="1" min="1" max="10000000000">
      </br></br>
-     <label for="price">Price to(between 0 and 1000000):</label>
-     <input type="range" id="item_price_to" name="to_price" min="0" max="1000000">
+     <label for="price">Price to(between 1 and 10000000000):</label>
+     <input type="range" id="item_price_to" name="to_price" min="1" max="10000000000">
      </br></br>
      <label for="price_sorting_order">Choose a order of sorting:</label>
      <select name="id_sortingBy" id="sortBy">
@@ -45,8 +43,9 @@
      </select>
      </br></br>
      <button type="button"  onclick="send_request()" name="request_button">Send request</button>
-     <!-- add interface for sorting -->
 </form>
+
+<div id="product_list">List of products</div>
 
 
 <script>
@@ -68,17 +67,6 @@ function send_request(id_brand) {
       var item_price_to = $("#item_price_to").val();
       var sort_by = $("#sortBy").val();
       var is_desc = $("#isDesc").val();
-
-      // the code below passes price from hidden field to item_cart_script
-      // var price = $('#price_' + id).val();
-    //   alert(id_category);
-
-    //   alert(id_brand);
-    //   alert(id_availability);
-    //   alert(item_price_from);
-    //   alert(item_price_to);
-    //   alert(sort_by);
-    //   alert(is_desc);
       
     
     $.ajax({                            
@@ -102,11 +90,31 @@ function send_request(id_brand) {
                 alert(response.posted);
             } else {
                 alert("Success case");
+
+
+                $.each(response.array, function(i, product) {
+                 content = '<p>' + "Name of product: " + product.name + '</p>';
+                 content += '<p>' + "Product id_availability: " + product.id_availability + '</p>';
+                 content += '<p>' + "Product price in UAH: " + product.price_in_uah + '</p>';
+                 
+                 $(content).appendTo("#product_list");
+                });
+
+                total_quantity = '<h3>' + "Total quantity: " + response.total_quantity[0].totalQuantityOfGoods + '</h3>';
+                $(total_quantity).appendTo("#product_list");
+                                      
+                total_filtered_quantity = '<h3>' + "Total filtered quantity: " + response.total_filtered_quantity[0].totalNumberOfFilteredItems + '</h3>';
+                $(total_filtered_quantity).appendTo("#product_list");                                                                              
+
+
                 console.log(response.posted);
                 console.log(response.success);
                 console.log(response.array);
+                console.log(response.total_quantity[0]);
+                console.log(response.total_filtered_quantity[0]);
+                
                    }
-            
+
         },
         error: function(response) {
           alert(response.success);
