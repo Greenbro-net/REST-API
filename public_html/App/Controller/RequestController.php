@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Core\Controller;
 use App\Controller\QueryController;
-use Exception;
+
 
 class RequestController extends Controller
 {
